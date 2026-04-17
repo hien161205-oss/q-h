@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên hệ - Q&H SKINLAB</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .page-banner {
+            background: linear-gradient(135deg, #5dade2 0%, #3498db 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .page-banner h1 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        .page-banner p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        .contact-info-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+        .contact-info-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+        }
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .info-icon {
+            width: 45px;
+            height: 45px;
+            background: #e6f2ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+        .info-content h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .info-content p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+        .contact-form-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+        .contact-form-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .btn-submit {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px 40px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn-submit:hover {
+            background: var(--primary-dark);
+        }
+        .store-list {
+            margin-top: 40px;
+        }
+        .store-list h2 {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .store-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .store-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        .store-card:hover {
+            transform: translateY(-5px);
+        }
+        .store-card h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        .store-card p {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+        .store-card .store-hours {
+            font-size: 12px;
+            color: #888;
+        }
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .store-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <div class="sticky-header" id="stickyHeader">
+        <header>
+            <div class="container header-main">
+                <a href="index.html" class="logo">Q&<span>H SKINLAB</span></a>
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Tìm sản phẩm, danh mục hay thương hiệu mong muốn">
+                    <button class="search-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </button>
+                    <div id="searchResults" class="search-results"></div>
+                </div>
+                <div class="header-actions">
+                    <div class="hotline-info" id="headerHotline">Hotline: 1900 636 510</div>
+                    <div class="action-item" id="accountTrigger">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        <span id="userNameDisplay" class="user-name-display"></span>
+                    </div>
+                    <div class="action-item" id="cartTrigger">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                        <span class="cart-badge" id="cartBadge">0</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="nav-wrap">
+            <div class="container">
+                <ul class="nav-list">
+                    <li class="nav-link nav-cat-trigger" style="display: flex; align-items: center; gap: 12px; width: 280px; background: #f8f9fa; padding-left: 15px; position: relative;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                        DANH MỤC SẢN PHẨM
+                    </li>
+                    <li class="nav-link" onclick="location.href='category.html?type=trang-diem'">TRANG ĐIỂM</li>
+                    <li class="nav-link" onclick="location.href='category.html?type=skincare'">CHĂM SÓC DA</li>
+                    <li class="nav-link" onclick="location.href='category.html?type=new'">NEW</li>
+                    <li class="nav-link" onclick="location.href='category.html?type=combo'">COMBO CHĂM DA</li>
+                    <li class="nav-link" onclick="location.href='category.html?type=brands'">THƯƠNG HIỆU</li>
+                    <li class="nav-link" onclick="location.href='magazine.html'">TẠP CHÍ LÀM ĐẸP</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <!-- Page Banner -->
+        <div class="page-banner">
+            <h1>LIÊN HỆ</h1>
+            <p>Chúng tôi luôn sẵn sàng lắng nghe và hỗ trợ bạn</p>
+        </div>
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumb" style="margin-bottom: 20px;">
+            <a href="index.html">Trang chủ</a> / <span>Liên hệ</span>
+        </div>
+
+        <!-- Contact Grid -->
+        <div class="contact-grid">
+            <!-- Contact Info -->
+            <div class="contact-info-card">
+                <h3>Thông tin liên hệ</h3>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    </div>
+                    <div class="info-content">
+                        <h4>Hotline</h4>
+                        <p>1900 636 510<br>(8:00 - 21:00, Thứ 2 - CN)</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    </div>
+                    <div class="info-content">
+                        <h4>Email</h4>
+                        <p>contact@qhskinlab.com<br>support@qhskinlab.com</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    </div>
+                    <div class="info-content">
+                        <h4>Địa chỉ</h4>
+                        <p>Tầng 3, Tòa nhà Q&H Tower<br>123 Nguyễn Huệ, Quận 1, TP.HCM</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </div>
+                    <div class="info-content">
+                        <h4>Fanpage</h4>
+                        <p>facebook.com/qhskinlab<br>instagram.com/qhskinlab</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form-card">
+                <h3>Gửi liên hệ</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label>Họ và tên *</label>
+                        <input type="text" placeholder="Nhập họ và tên của bạn" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" placeholder="Nhập địa chỉ email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Số điện thoại</label>
+                        <input type="tel" placeholder="Nhập số điện thoại">
+                    </div>
+                    <div class="form-group">
+                        <label>Chủ đề</label>
+                        <select>
+                            <option value="">-- Chọn chủ đề --</option>
+                            <option value="order">Tư vấn đơn hàng</option>
+                            <option value="product">Tư vấn sản phẩm</option>
+                            <option value="return">Đổi/Trả hàng</option>
+                            <option value="cooperation">Hợp tác kinh doanh</option>
+                            <option value="other">Khác</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Nội dung *</label>
+                        <textarea placeholder="Nhập nội dung liên hệ của bạn..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">GỬI LIÊN HỆ</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Store List -->
+        <div class="store-list">
+            <h2>Hệ thống cửa hàng</h2>
+            <div class="store-grid">
+                <div class="store-card">
+                    <h4>Q&H SKINLAB Quận 1</h4>
+                    <p>123 Nguyễn Huệ, Phường Bến Nghé, Quận 1, TP.HCM</p>
+                    <p>📞 028 1234 5678</p>
+                    <p class="store-hours">🕐 8:00 - 21:00 (Thứ 2 - CN)</p>
+                </div>
+                <div class="store-card">
+                    <h4>Q&H SKINLAB Quận 3</h4>
+                    <p>456 Nguyễn Đình Chiểu, Phường 4, Quận 3, TP.HCM</p>
+                    <p>📞 028 2345 6789</p>
+                    <p class="store-hours">🕐 8:00 - 21:00 (Thứ 2 - CN)</p>
+                </div>
+                <div class="store-card">
+                    <h4>Q&H SKINLAB Quận 7</h4>
+                    <p>789 Đường 3/2, Phường Tân Phong, Quận 7, TP.HCM</p>
+                    <p>📞 028 3456 7890</p>
+                    <p class="store-hours">🕐 8:00 - 21:00 (Thứ 2 - CN)</p>
+                </div>
+                <div class="store-card">
+                    <h4>Q&H SKINLAB Đà Nẵng</h4>
+                    <p>56 Nguyễn Văn Linh, Phường Nam Dương, Quận Hải Châu, Đà Nẵng</p>
+                    <p>📞 0236 456 7890</p>
+                    <p class="store-hours">🕐 8:00 - 21:00 (Thứ 2 - CN)</p>
+                </div>
+                <div class="store-card">
+                    <h4>Q&H SKINLAB Hà Nội</h4>
+                    <p>88 Trần Duy Hưng, Phường Trung Hòa, Quận Cầu Giấy, Hà Nội</p>
+                    <p>📞 024 5678 9012</p>
+                    <p class="store-hours">🕐 8:00 - 21:00 (Thứ 2 - CN)</p>
+                </div>
+                <div class="store-card">
+                    <h4>Q&H SKINLAB Online</h4>
+                    <p>Mua sắm online 24/7</p>
+                    <p>📞 1900 636 510</p>
+                    <p class="store-hours">🕐 Hỗ trợ 8:00 - 21:00</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Về chúng tôi</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">Câu chuyện thương hiệu</a></li>
+                        <li><a href="about.html">Hệ thống cửa hàng</a></li>
+                        <li><a href="about.html">Tuyển dụng</a></li>
+                        <li><a href="contact.html">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Chính sách</h4>
+                    <ul class="footer-links">
+                        <li><a href="policy.html">Chính sách bảo mật</a></li>
+                        <li><a href="policy.html">Điều khoản sử dụng</a></li>
+                        <li><a href="policy.html">Chính sách đổi trả</a></li>
+                        <li><a href="policy.html">Chính sách vận chuyển</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Hỗ trợ khách hàng</h4>
+                    <ul class="footer-links">
+                        <li><a href="support.html">Hướng dẫn mua hàng</a></li>
+                        <li><a href="support.html">Phương thức thanh toán</a></li>
+                        <li><a href="support.html">Câu hỏi thường gặp</a></li>
+                        <li><a href="support.html">Tra cứu đơn hàng</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Kết nối với chúng tôi</h4>
+                    <div style="display: flex; gap: 15px; margin-top: 10px;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Q&H SKINLAB. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showToast('Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi trong 24h.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

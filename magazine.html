@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạp chí làm đẹp | BeautyShop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- STICKY HEADER WRAPPER -->
+    <div class="sticky-header" id="stickyHeader">
+        <!-- HEADER -->
+        <header>
+            <div class="container header-main">
+                <a href="index.html" class="logo">Q&<span>H SKINLAB</span></a>
+                
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Tìm kiếm bài viết làm đẹp...">
+                    <button class="search-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </button>
+                    <div id="searchResults" class="search-results"></div>
+                </div>
+
+                <div class="header-actions">
+                    <div class="hotline-info" id="headerHotline">Hotline: 1900 636 510</div>
+                    <div class="action-item" id="adminPanelBtn" style="display: none; color: var(--primary); font-weight: 800; border: 1px solid var(--primary); padding: 5px 10px; border-radius: 4px; cursor: pointer;">
+                        ADMIN PANEL
+                    </div>
+                    <div class="action-item" id="accountTrigger">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        <span id="userNameDisplay" class="user-name-display"></span>
+                    </div>
+                    <div class="action-item" id="cartTrigger">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                        <span class="cart-badge" id="cartBadge">0</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- NAVIGATION -->
+        <div class="nav-wrap">
+            <div class="container">
+                <ul class="nav-list">
+                    <li class="nav-link" onclick="location.href='index.html'">TRANG CHỦ</li>
+                    <li class="nav-link" onclick="location.href='category.html?type=makeup'">TRANG ĐIỂM</li>
+                    <li class="nav-link" onclick="location.href='category.html?type=skincare'">CHĂM SÓC DA</li>
+                    <li class="nav-link" onclick="location.href='category.html?type=new'">NEW</li>
+                    <li class="nav-link" onclick="location.href='category.html?type=combo'">COMBO CHĂM DA 💗</li>
+                    <li class="nav-link" onclick="location.href='magazine.html'">TẠP CHÍ LÀM ĐẸP</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="breadcrumb" style="margin: 20px 0; font-size: 13px; color: #666;">
+            <a href="index.html" style="color: inherit; text-decoration: none;">Trang chủ</a> / 
+            <a href="magazine.html" style="color: inherit; text-decoration: none;">Tạp chí làm đẹp</a> / 
+            <span id="breadcrumbTopic" style="color: var(--primary); font-weight: 700;">Tất cả</span>
+        </div>
+
+        <div class="magazine-layout">
+            <!-- SIDEBAR -->
+            <aside class="mag-sidebar">
+                <h2 class="mag-sidebar-title">Chuyên mục</h2>
+                <ul class="mag-sidebar-list">
+                    <li class="mag-sidebar-item active" data-topic="all">Tất cả bài viết</li>
+                    <li class="mag-sidebar-item" data-topic="makeup-tips">Bí quyết trang điểm</li>
+                    <li class="mag-sidebar-item" data-topic="skincare-tips">Chăm sóc da chuyên sâu</li>
+                    <li class="mag-sidebar-item" data-topic="review">Review mỹ phẩm</li>
+                    <li class="mag-sidebar-item" data-topic="top-products">Top mỹ phẩm</li>
+                </ul>
+            </aside>
+
+            <!-- MAIN CONTENT -->
+            <div class="mag-main-content">
+                <h1 id="magazineTitle" style="font-size: 24px; font-weight: 800; margin-bottom: 25px; text-transform: uppercase;">TẤT CẢ BÀI VIẾT</h1>
+                <div class="magazine-grid" id="magazineGrid">
+                    <!-- JS Render -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Về chúng tôi</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">Câu chuyện thương hiệu</a></li>
+                        <li><a href="about.html">Hệ thống cửa hàng</a></li>
+                        <li><a href="about.html">Tuyển dụng</a></li>
+                        <li><a href="contact.html">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Chính sách</h4>
+                    <ul class="footer-links">
+                        <li><a href="policy.html">Chính sách bảo mật</a></li>
+                        <li><a href="policy.html">Điều khoản sử dụng</a></li>
+                        <li><a href="policy.html">Chính sách đổi trả</a></li>
+                        <li><a href="policy.html">Chính sách vận chuyển</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Hỗ trợ khách hàng</h4>
+                    <ul class="footer-links">
+                        <li><a href="support.html">Hướng dẫn mua hàng</a></li>
+                        <li><a href="support.html">Phương thức thanh toán</a></li>
+                        <li><a href="support.html">Câu hỏi thường gặp</a></li>
+                        <li><a href="support.html">Tra cứu đơn hàng</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Kết nối</h4>
+                    <div style="display: flex; gap: 15px; margin-top: 10px;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Q&H SKINLAB Clone. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

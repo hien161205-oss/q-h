@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hỗ trợ khách hàng - Q&H SKINLAB</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-page {
+            padding: 60px 0;
+            line-height: 1.8;
+            color: var(--text);
+        }
+        .content-page h1 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 30px;
+            text-align: center;
+            color: var(--black);
+        }
+        .content-page h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+        }
+        .content-page p {
+            margin-bottom: 20px;
+        }
+        .support-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+        }
+        .faq-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+        .faq-item strong {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+    </style>
+</head>
+<body>
+    <!-- STICKY HEADER WRAPPER -->
+    <div class="sticky-header" id="stickyHeader">
+        <!-- HEADER -->
+        <header>
+            <div class="container header-main">
+                <a href="index.html" class="logo">Q&<span>H SKINLAB</span></a>
+                
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Tìm sản phẩm, danh mục hay thương hiệu mong muốn">
+                    <button class="search-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </button>
+                    <div id="searchResults" class="search-results"></div>
+                </div>
+
+                <div class="header-actions">
+                    <div class="hotline-info">
+                        Hotline: 1900 636 510
+                    </div>
+                    <div class="action-item" id="accountTrigger">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        <span id="userNameDisplay" class="user-name-display"></span>
+                    </div>
+                    <div class="action-item" id="cartTrigger">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                        <span class="cart-badge" id="cartBadge">0</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- NAVIGATION -->
+        <div class="nav-wrap">
+            <div class="container">
+                <ul class="nav-list">
+                    <li class="nav-link nav-cat-trigger" style="display: flex; align-items: center; gap: 12px; width: 280px; background: #f8f9fa; padding-left: 15px; position: relative;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                        DANH MỤC SẢN PHẨM
+                        <!-- SIDEBAR DROPDOWN -->
+                        <aside class="side-menu">
+                            <ul class="side-nav-list">
+                                <li class="side-nav-item" onclick="location.href='category.html?type=trang-diem'"><span>💄</span> Trang điểm</li>
+                                <li class="side-nav-item" onclick="location.href='category.html?type=skincare'"><span>🧴</span> Chăm sóc da mặt</li>
+                                <li class="side-nav-item" onclick="location.href='category.html?type=bodycare'"><span>🧼</span> Chăm sóc cơ thể</li>
+                                <li class="side-nav-item" onclick="location.href='category.html?type=haircare'"><span>💆‍♀️</span> Chăm sóc tóc & da đầu</li>
+                                <li class="side-nav-item" onclick="location.href='category.html?type=perfume'"><span>🌸</span> Nước hoa</li>
+                                <li class="side-nav-item sub-item"><span>✨</span> TẠO KHỐI/ HIGHLIGHTER</li>
+                                <li class="side-nav-item sub-item"><span>🎨</span> CHE KHUYẾT ĐIỂM</li>
+                                <li class="side-nav-item sub-item"><span>🖌️</span> KEM LÓT</li>
+                            </ul>
+                        </aside>
+                    </li>
+                    <li class="nav-link" onclick="location.href='category.html?type=trang-diem'">TRANG ĐIỂM <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="margin-left: 4px;"><path d="M6 9l6 6 6-6"></path></svg>
+                        <div class="nav-dropdown">
+                            <ul class="dropdown-list">
+                                <li class="dropdown-item">MẶT <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"></path></svg></li>
+                                <li class="dropdown-item">MẮT <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"></path></svg></li>
+                                <li class="dropdown-item">MÔI <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"></path></svg></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-link" onclick="location.href='category.html?type=skincare'">CHĂM SÓC DA <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="margin-left: 4px;"><path d="M6 9l6 6 6-6"></path></svg></li>
+                    <li class="nav-link" onclick="location.href='category.html?type=new'">NEW</li>
+                    <li class="nav-link" onclick="location.href='category.html?type=combo'">COMBO CHĂM DA 💗</li>
+                    <li class="nav-link" onclick="location.href='category.html?type=brands'">THƯƠNG HIỆU <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="margin-left: 4px;"><path d="M6 9l6 6 6-6"></path></svg>
+                        <div class="mega-menu">
+                            <div class="mega-col">
+                                <ul class="mega-list">
+                                    <li onclick="location.href='category.html?brand=Merzy'">Merzy</li><li onclick="location.href='category.html?brand=ACNES'">ACNES</li><li onclick="location.href='category.html?brand=Armaf'">Armaf</li><li onclick="location.href='category.html?brand=Bioderma'">Bioderma</li><li onclick="location.href='category.html?brand=Calla'">Calla</li><li onclick="location.href='category.html?brand=Cerave'">Cerave</li><li onclick="location.href='category.html?brand=Cleo'">Cleo</li><li onclick="location.href='category.html?brand=Colorkey'">Colorkey</li><li onclick="location.href='category.html?brand=Dasique'">Dasique</li><li onclick="location.href='category.html?brand=DHC'">DHC</li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <ul class="mega-list">
+                                    <li onclick="location.href='category.html?brand=Romand'">Romand</li><li onclick="location.href='category.html?brand=Amortals'">Amortals</li><li onclick="location.href='category.html?brand=B.O.M'">B.O.M</li><li onclick="location.href='category.html?brand=Bio-essence'">Bio-essence</li><li onclick="location.href='category.html?brand=Carenel'">Carenel</li><li onclick="location.href='category.html?brand=Cetaphil'">Cetaphil</li><li onclick="location.href='category.html?brand=CLINICOS'">CLINICOS</li><li onclick="location.href='category.html?brand=Compliment'">Compliment</li><li onclick="location.href='category.html?brand=DAZZLE ME'">DAZZLE ME</li><li onclick="location.href='category.html?brand=Diana'">Diana</li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <ul class="mega-list">
+                                    <li onclick="location.href='category.html?brand=3CE'">3CE</li><li onclick="location.href='category.html?brand=Anessa'">Anessa</li><li onclick="location.href='category.html?brand=Banobagi'">Banobagi</li><li onclick="location.href='category.html?brand=Bioré'">Bioré</li><li onclick="location.href='category.html?brand=Carslan'">Carslan</li><li onclick="location.href='category.html?brand=Chando Himalaya'">Chando Himalaya</li><li onclick="location.href='category.html?brand=Clio'">Clio</li><li onclick="location.href='category.html?brand=Corine De Farme'">Corine De Farme</li><li onclick="location.href='category.html?brand=Dearmay'">Dearmay</li><li onclick="location.href='category.html?brand=DoDo Sugar'">DoDo Sugar</li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <ul class="mega-list">
+                                    <li onclick="location.href='category.html?brand=9 Wishes'">9 Wishes</li><li onclick="location.href='category.html?brand=Angel\'s Liquid'">Angel's Liquid</li><li onclick="location.href='category.html?brand=Batiste'">Batiste</li><li onclick="location.href='category.html?brand=BNBG'">BNBG</li><li onclick="location.href='category.html?brand=Caryophy'">Caryophy</li><li onclick="location.href='category.html?brand=Chinoshio'">Chinoshio</li><li onclick="location.href='category.html?brand=Closeup'">Closeup</li><li onclick="location.href='category.html?brand=Curél'">Curél</li><li onclick="location.href='category.html?brand=Derladie'">Derladie</li><li onclick="location.href='category.html?brand=Dove'">Dove</li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <ul class="mega-list">
+                                    <li onclick="location.href='category.html?brand=A BONNE'">A BONNE</li><li onclick="location.href='category.html?brand=Aperire'">Aperire</li><li onclick="location.href='category.html?brand=Bbia'">Bbia</li><li onclick="location.href='category.html?brand=Bodymiss'">Bodymiss</li><li onclick="location.href='category.html?brand=Catrice'">Catrice</li><li onclick="location.href='category.html?brand=Cindy Bloom'">Cindy Bloom</li><li onclick="location.href='category.html?brand=Cocoon'">Cocoon</li><li onclick="location.href='category.html?brand=Dạ Hương'">Dạ Hương</li><li onclick="location.href='category.html?brand=Derma Forte'">Derma Forte</li><li onclick="location.href='category.html?brand=DrCeutics'">DrCeutics</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-link" onclick="location.href='magazine.html'">TẠP CHÍ LÀM ĐẸP <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="margin-left: 4px;"><path d="M6 9l6 6 6-6"></path></svg>
+                        <div class="mega-menu">
+                            <div class="mega-col">
+                                <ul class="mega-list">
+                                    <li onclick="location.href='magazine.html?topic=review'">Review Mỹ Phẩm</li><li>Trẻ Hoá Làn Da</li><li>Thiết Bị Làm Đẹp</li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <ul class="mega-list">
+                                    <li onclick="location.href='magazine.html?topic=top-products'">Top Mỹ Phẩm</li><li>Làm Mờ Sạm Nám</li><li>Thực Phẩm Chức Năng</li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <ul class="mega-list">
+                                    <li onclick="location.href='magazine.html?topic=makeup-tips'">Hướng Dẫn Trang Điểm</li><li>Trắng Da</li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <ul class="mega-list">
+                                    <li>Chăm Sóc Da Body</li><li>Trị Thâm Mụn</li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <ul class="mega-list">
+                                    <li onclick="location.href='magazine.html?topic=skincare-tips'">Chăm Sóc Da Mặt</li><li>Nước Hoa</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <main class="container content-page">
+        <h1>HỖ TRỢ KHÁCH HÀNG</h1>
+        
+        <div class="support-card">
+            <h2>Hướng dẫn mua hàng</h2>
+            <p>Để mua hàng tại Q&H SKINLAB, quý khách vui lòng thực hiện các bước sau:</p>
+            <ol>
+                <li>Truy cập website và chọn sản phẩm yêu thích.</li>
+                <li>Thêm sản phẩm vào giỏ hàng và kiểm tra số lượng.</li>
+                <li>Nhấn "Thanh toán", điền đầy đủ thông tin giao hàng.</li>
+                <li>Chọn phương thức thanh toán và hoàn tất đơn hàng.</li>
+            </ol>
+        </div>
+
+        <div class="support-card">
+            <h2>Phương thức thanh toán</h2>
+            <p>Chúng tôi cung cấp đa dạng các phương thức thanh toán linh hoạt:</p>
+            <ul>
+                <li><strong>COD:</strong> Thanh toán tiền mặt khi nhận hàng.</li>
+                <li><strong>Chuyển khoản ngân hàng:</strong> Chuyển khoản trực tiếp vào tài khoản của shop.</li>
+                <li><strong>Ví điện tử:</strong> Hỗ trợ thanh toán qua MoMo, ZaloPay, ShopeePay.</li>
+            </ul>
+        </div>
+
+        <div class="support-card">
+            <h2>Câu hỏi thường gặp (FAQ)</h2>
+            <div class="faq-item">
+                <strong>1. Sản phẩm tại Q&H SKINLAB có chính hãng không?</strong>
+                <p>Chúng tôi cam kết 100% sản phẩm đều là hàng chính hãng, có nguồn gốc xuất xứ rõ ràng và đầy đủ giấy tờ kiểm định.</p>
+            </div>
+            <div class="faq-item">
+                <strong>2. Tôi có thể hủy đơn hàng sau khi đã đặt không?</strong>
+                <p>Quý khách có thể hủy đơn hàng trước khi shop bàn giao cho đơn vị vận chuyển. Vui lòng liên hệ hotline để được hỗ trợ nhanh nhất.</p>
+            </div>
+            <div class="faq-item">
+                <strong>3. Shop có ship hàng hỏa tốc không?</strong>
+                <p>Có, chúng tôi hỗ trợ ship hỏa tốc trong nội thành Hải Phòng trong vòng 2 giờ kể từ khi xác nhận đơn hàng.</p>
+            </div>
+        </div>
+
+        <div class="support-card">
+            <h2>Tra cứu đơn hàng</h2>
+            <p>Để tra cứu trạng thái đơn hàng, quý khách vui lòng nhập mã đơn hàng vào hệ thống hoặc liên hệ hotline 1900 1234 để được nhân viên hỗ trợ trực tiếp.</p>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Về chúng tôi</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">Câu chuyện thương hiệu</a></li>
+                        <li><a href="about.html">Hệ thống cửa hàng</a></li>
+                        <li><a href="about.html">Tuyển dụng</a></li>
+                        <li><a href="contact.html">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Chính sách</h4>
+                    <ul class="footer-links">
+                        <li><a href="policy.html">Chính sách bảo mật</a></li>
+                        <li><a href="policy.html">Điều khoản sử dụng</a></li>
+                        <li><a href="policy.html">Chính sách đổi trả</a></li>
+                        <li><a href="policy.html">Chính sách vận chuyển</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Hỗ trợ khách hàng</h4>
+                    <ul class="footer-links">
+                        <li><a href="support.html">Hướng dẫn mua hàng</a></li>
+                        <li><a href="support.html">Phương thức thanh toán</a></li>
+                        <li><a href="support.html">Câu hỏi thường gặp</a></li>
+                        <li><a href="support.html">Tra cứu đơn hàng</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Kết nối với chúng tôi</h4>
+                    <div style="display: flex; gap: 15px; margin-top: 10px;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Q&H SKINLAB Clone. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- CART DRAWER -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3 style="font-weight: 800; text-transform: uppercase;">Giỏ hàng</h3>
+            <span style="cursor: pointer; font-size: 24px;" id="closeCart">&times;</span>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- JS Render -->
+        </div>
+        <div style="padding-top: 20px; border-top: 1px solid var(--border);">
+            <div class="flex-between" style="font-weight: 800; font-size: 18px; margin-bottom: 20px;">
+                <span>Tổng tiền:</span>
+                <span id="cartTotal">0đ</span>
+            </div>
+            <button style="width: 100%; padding: 15px; background: var(--primary); border: none; font-weight: 800; cursor: pointer;">THANH TOÁN NGAY</button>
+        </div>
+    </div>
+
+    <!-- BACK TO TOP -->
+    <div class="back-to-top" id="backToTop">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </div>
+
+    <!-- LOGIN MODAL -->
+    <div class="modal-overlay" id="loginModalOverlay">
+        <div class="login-modal">
+            <span class="close-modal" id="closeLogin">&times;</span>
+            <div id="loginView">
+                <h2>Đăng nhập</h2>
+                <form class="login-form" id="loginForm">
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Mật khẩu" required>
+                
+                <div class="login-options">
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                        <input type="checkbox"> Ghi nhớ đăng nhập
+                    </label>
+                    <a href="#">Quên mật khẩu?</a>
+                </div>
+
+                <button type="submit" class="btn-login">Đăng nhập</button>
+                
+                <button type="button" class="btn-social btn-facebook">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    Đăng nhập Facebook
+                </button>
+                
+                <button type="button" class="btn-social btn-google">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.48 10.92v3.28h4.74c-.2 1.22-.97 2.22-2.25 3.07v2.55h3.64c2.13-1.96 3.36-4.85 3.36-8.19 0-.68-.07-1.15-.19-1.71H12.48zm-10.6 4.9c1.26 3.71 4.71 6.38 8.77 6.38 2.32 0 4.5-.79 6.14-2.13l-3.64-2.55c-.99.67-2.26 1.07-3.53 1.07-2.73 0-5.04-1.84-5.87-4.31H1.88v2.54zm8.77-13.43c-2.32 0-4.5.79-6.14 2.13l3.64 2.55c.99-.67-2.26 1.07-3.53 1.07-2.73 0-5.04-1.84-5.87-4.31h3.99v-2.54c-1.26-3.71-4.71-6.38-8.77-6.38z"></path></svg>
+                    Đăng nhập Google
+                </button>
+
+                    <div class="register-section">
+                        <p>Tạo tài khoản ngay</p>
+                        <button type="button" class="btn-register" id="toRegister">Đăng ký</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Register View -->
+            <div id="registerView" style="display: none;">
+                <h2>Đăng ký</h2>
+                <form class="login-form" id="registerForm">
+                    <input type="text" placeholder="Họ và tên" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Mật khẩu" required>
+                    <input type="password" placeholder="Nhập lại mật khẩu" required>
+                    
+                    <button type="submit" class="btn-login">Đăng ký</button>
+                    
+                    <div class="register-section">
+                        <p>Đã có tài khoản?</p>
+                        <button type="button" class="btn-register" id="toLogin">Đăng nhập</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

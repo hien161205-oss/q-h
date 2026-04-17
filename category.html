@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh mục sản phẩm - Q&H SKINLAB</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- STICKY HEADER WRAPPER -->
+    <div class="sticky-header" id="stickyHeader">
+        <!-- HEADER -->
+        <header>
+            <div class="container header-main">
+                <a href="index.html" class="logo">Q&<span>H SKINLAB</span></a>
+                
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Tìm sản phẩm, danh mục hay thương hiệu mong muốn">
+                    <button class="search-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </button>
+                    <div id="searchResults" class="search-results"></div>
+                </div>
+
+                <div class="header-actions">
+                    <div class="hotline-info" id="headerHotline">Hotline: 1900 636 510</div>
+                    <div class="action-item" id="adminPanelBtn" style="display: none; color: var(--primary); font-weight: 800; border: 1px solid var(--primary); padding: 5px 10px; border-radius: 4px; cursor: pointer;">
+                        ADMIN PANEL
+                    </div>
+                    <div class="action-item" id="accountTrigger">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        <span id="userNameDisplay" class="user-name-display"></span>
+                    </div>
+                    <div class="action-item" id="cartTrigger">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                        <span class="cart-badge" id="cartBadge">0</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- NAVIGATION -->
+        <div class="nav-wrap">
+            <div class="container">
+                <ul class="nav-list">
+                    <li class="nav-link nav-cat-trigger" style="display: flex; align-items: center; gap: 12px; width: 280px; background: #f8f9fa; padding-left: 15px; position: relative;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                        DANH MỤC SẢN PHẨM
+                        <!-- SIDEBAR DROPDOWN -->
+                        <aside class="side-menu">
+                            <ul class="side-nav-list">
+                                <li class="side-nav-item" onclick="location.href='category.html?type=trang-diem'"><span>💄</span> Trang điểm</li>
+                                <li class="side-nav-item" onclick="location.href='category.html?type=skincare'"><span>🧴</span> Chăm sóc da mặt</li>
+                                <li class="side-nav-item" onclick="location.href='category.html?type=bodycare'"><span>🧼</span> Chăm sóc cơ thể</li>
+                                <li class="side-nav-item" onclick="location.href='category.html?type=haircare'"><span>💆‍♀️</span> Chăm sóc tóc & da đầu</li>
+                                <li class="side-nav-item" onclick="location.href='category.html?type=perfume'"><span>🌸</span> Nước hoa</li>
+                                <li class="side-nav-item sub-item"><span>✨</span> TẠO KHỐI/ HIGHLIGHTER</li>
+                                <li class="side-nav-item sub-item"><span>🎨</span> CHE KHUYẾT ĐIỂM</li>
+                                <li class="side-nav-item sub-item"><span>🖌️</span> KEM LÓT</li>
+                            </ul>
+                        </aside>
+                    </li>
+                    <li class="nav-link" onclick="location.href='category.html?type=trang-diem'">TRANG ĐIỂM <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="margin-left: 4px;"><path d="M6 9l6 6 6-6"></path></svg>
+                        <div class="nav-dropdown">
+                            <ul class="dropdown-list">
+                                <li class="dropdown-item">MẶT <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"></path></svg></li>
+                                <li class="dropdown-item">MẮT <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"></path></svg></li>
+                                <li class="dropdown-item">MÔI <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"></path></svg></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-link" onclick="location.href='category.html?type=skincare'">CHĂM SÓC DA <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="margin-left: 4px;"><path d="M6 9l6 6 6-6"></path></svg></li>
+                    <li class="nav-link" onclick="location.href='category.html?type=new'">NEW</li>
+                    <li class="nav-link" onclick="location.href='category.html?type=combo'">COMBO CHĂM DA 💗</li>
+                    <li class="nav-link" onclick="location.href='category.html?type=brands'">THƯƠNG HIỆU <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="margin-left: 4px;"><path d="M6 9l6 6 6-6"></path></svg>
+                        <div class="mega-menu">
+                            <div class="mega-col">
+                                <ul class="mega-list">
+                                    <li onclick="location.href='category.html?brand=Merzy'">Merzy</li><li onclick="location.href='category.html?brand=ACNES'">ACNES</li><li onclick="location.href='category.html?brand=Armaf'">Armaf</li><li onclick="location.href='category.html?brand=Bioderma'">Bioderma</li><li onclick="location.href='category.html?brand=Calla'">Calla</li><li onclick="location.href='category.html?brand=Cerave'">Cerave</li><li onclick="location.href='category.html?brand=Cleo'">Cleo</li><li onclick="location.href='category.html?brand=Colorkey'">Colorkey</li><li onclick="location.href='category.html?brand=Dasique'">Dasique</li><li onclick="location.href='category.html?brand=DHC'">DHC</li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <ul class="mega-list">
+                                    <li onclick="location.href='category.html?brand=Romand'">Romand</li><li onclick="location.href='category.html?brand=Amortals'">Amortals</li><li onclick="location.href='category.html?brand=B.O.M'">B.O.M</li><li onclick="location.href='category.html?brand=Bio-essence'">Bio-essence</li><li onclick="location.href='category.html?brand=Carenel'">Carenel</li><li onclick="location.href='category.html?brand=Cetaphil'">Cetaphil</li><li onclick="location.href='category.html?brand=CLINICOS'">CLINICOS</li><li onclick="location.href='category.html?brand=Compliment'">Compliment</li><li onclick="location.href='category.html?brand=DAZZLE ME'">DAZZLE ME</li><li onclick="location.href='category.html?brand=Diana'">Diana</li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <ul class="mega-list">
+                                    <li onclick="location.href='category.html?brand=3CE'">3CE</li><li onclick="location.href='category.html?brand=Anessa'">Anessa</li><li onclick="location.href='category.html?brand=Banobagi'">Banobagi</li><li onclick="location.href='category.html?brand=Bioré'">Bioré</li><li onclick="location.href='category.html?brand=Carslan'">Carslan</li><li onclick="location.href='category.html?brand=Chando Himalaya'">Chando Himalaya</li><li onclick="location.href='category.html?brand=Clio'">Clio</li><li onclick="location.href='category.html?brand=Corine De Farme'">Corine De Farme</li><li onclick="location.href='category.html?brand=Dearmay'">Dearmay</li><li onclick="location.href='category.html?brand=DoDo Sugar'">DoDo Sugar</li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <ul class="mega-list">
+                                    <li onclick="location.href='category.html?brand=9 Wishes'">9 Wishes</li><li onclick="location.href='category.html?brand=Angel\'s Liquid'">Angel's Liquid</li><li onclick="location.href='category.html?brand=Batiste'">Batiste</li><li onclick="location.href='category.html?brand=BNBG'">BNBG</li><li onclick="location.href='category.html?brand=Caryophy'">Caryophy</li><li onclick="location.href='category.html?brand=Chinoshio'">Chinoshio</li><li onclick="location.href='category.html?brand=Closeup'">Closeup</li><li onclick="location.href='category.html?brand=Curél'">Curél</li><li onclick="location.href='category.html?brand=Derladie'">Derladie</li><li onclick="location.href='category.html?brand=Dove'">Dove</li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <ul class="mega-list">
+                                    <li onclick="location.href='category.html?brand=A BONNE'">A BONNE</li><li onclick="location.href='category.html?brand=Aperire'">Aperire</li><li onclick="location.href='category.html?brand=Bbia'">Bbia</li><li onclick="location.href='category.html?brand=Bodymiss'">Bodymiss</li><li onclick="location.href='category.html?brand=Catrice'">Catrice</li><li onclick="location.href='category.html?brand=Cindy Bloom'">Cindy Bloom</li><li onclick="location.href='category.html?brand=Cocoon'">Cocoon</li><li onclick="location.href='category.html?brand=Dạ Hương'">Dạ Hương</li><li onclick="location.href='category.html?brand=Derma Forte'">Derma Forte</li><li onclick="location.href='category.html?brand=DrCeutics'">DrCeutics</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-link" onclick="location.href='magazine.html'">TẠP CHÍ LÀM ĐẸP <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="margin-left: 4px;"><path d="M6 9l6 6 6-6"></path></svg>
+                        <div class="mega-menu">
+                            <div class="mega-col">
+                                <ul class="mega-list">
+                                    <li onclick="location.href='magazine.html?topic=review'">Review Mỹ Phẩm</li><li>Trẻ Hoá Làn Da</li><li>Thiết Bị Làm Đẹp</li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <ul class="mega-list">
+                                    <li onclick="location.href='magazine.html?topic=top-products'">Top Mỹ Phẩm</li><li>Làm Mờ Sạm Nám</li><li>Thực Phẩm Chức Năng</li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <ul class="mega-list">
+                                    <li onclick="location.href='magazine.html?topic=makeup-tips'">Hướng Dẫn Trang Điểm</li><li>Trắng Da</li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <ul class="mega-list">
+                                    <li>Chăm Sóc Da Body</li><li>Trị Thâm Mụn</li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <ul class="mega-list">
+                                    <li onclick="location.href='magazine.html?topic=skincare-tips'">Chăm Sóc Da Mặt</li><li>Nước Hoa</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <!-- BREADCRUMB -->
+        <div class="breadcrumb" style="margin: 20px 0; font-size: 13px; color: #666;">
+            <a href="index.html" style="color: inherit; text-decoration: none;">Trang chủ</a> / <span id="breadcrumbCategory" style="color: var(--primary); font-weight: 600;">Danh mục</span>
+        </div>
+
+        <!-- CATEGORY BANNER -->
+        <div class="category-banner" id="categoryBanner" style="width: 100%; height: 250px; border-radius: 8px; margin-bottom: 30px; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; color: white; text-align: center; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3);"></div>
+            <h1 id="categoryTitle" style="position: relative; z-index: 1; font-size: 42px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px;">DANH MỤC</h1>
+        </div>
+
+        <div class="category-layout" style="display: grid; grid-template-columns: 280px 1fr; gap: 30px;">
+            <!-- SIDEBAR FILTERS -->
+            <aside class="category-sidebar">
+                <div class="filter-group" style="margin-bottom: 30px;">
+                    <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 15px; border-bottom: 2px solid var(--primary); display: inline-block; padding-bottom: 5px;">THƯƠNG HIỆU</h3>
+                    <ul style="list-style: none; font-size: 14px;" id="brandFilterList">
+                        <li style="margin-bottom: 8px;"><label style="display: flex; align-items: center; gap: 10px; cursor: pointer;"><input type="checkbox" class="brand-checkbox" value="Laneige"> Laneige</label></li>
+                        <li style="margin-bottom: 8px;"><label style="display: flex; align-items: center; gap: 10px; cursor: pointer;"><input type="checkbox" class="brand-checkbox" value="Innisfree"> Innisfree</label></li>
+                        <li style="margin-bottom: 8px;"><label style="display: flex; align-items: center; gap: 10px; cursor: pointer;"><input type="checkbox" class="brand-checkbox" value="Skin1004"> Skin1004</label></li>
+                        <li style="margin-bottom: 8px;"><label style="display: flex; align-items: center; gap: 10px; cursor: pointer;"><input type="checkbox" class="brand-checkbox" value="Cocoon"> Cocoon</label></li>
+                        <li style="margin-bottom: 8px;"><label style="display: flex; align-items: center; gap: 10px; cursor: pointer;"><input type="checkbox" class="brand-checkbox" value="Romand"> Romand</label></li>
+                        <li style="margin-bottom: 8px;"><label style="display: flex; align-items: center; gap: 10px; cursor: pointer;"><input type="checkbox" class="brand-checkbox" value="Clio"> Clio</label></li>
+                        <li style="margin-bottom: 8px;"><label style="display: flex; align-items: center; gap: 10px; cursor: pointer;"><input type="checkbox" class="brand-checkbox" value="Bioderma"> Bioderma</label></li>
+                        <li style="margin-bottom: 8px;"><label style="display: flex; align-items: center; gap: 10px; cursor: pointer;"><input type="checkbox" class="brand-checkbox" value="3CE"> 3CE</label></li>
+                    </ul>
+                </div>
+
+                <div class="filter-group" style="margin-bottom: 30px;">
+                    <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 15px; border-bottom: 2px solid var(--primary); display: inline-block; padding-bottom: 5px;">KHOẢNG GIÁ</h3>
+                    <ul style="list-style: none; font-size: 14px;" id="priceFilterList">
+                        <li style="margin-bottom: 8px;"><label style="display: flex; align-items: center; gap: 10px; cursor: pointer;"><input type="checkbox" class="price-checkbox" value="0-200000"> Dưới 200.000đ</label></li>
+                        <li style="margin-bottom: 8px;"><label style="display: flex; align-items: center; gap: 10px; cursor: pointer;"><input type="checkbox" class="price-checkbox" value="200000-500000"> 200.000đ - 500.000đ</label></li>
+                        <li style="margin-bottom: 8px;"><label style="display: flex; align-items: center; gap: 10px; cursor: pointer;"><input type="checkbox" class="price-checkbox" value="500000-999999999"> Trên 500.000đ</label></li>
+                    </ul>
+                    
+                    <div style="margin-top: 15px; padding-top: 15px; border-top: 1px dashed #eee;">
+                        <p style="font-size: 12px; font-weight: 600; margin-bottom: 10px; color: #666;">TỰ NHẬP KHOẢNG GIÁ</p>
+                        <div style="display: flex; align-items: center; gap: 5px;">
+                            <input type="number" id="minPrice" placeholder="Từ" style="width: 100%; padding: 5px; border: 1px solid #ddd; border-radius: 4px; font-size: 12px;">
+                            <span>-</span>
+                            <input type="number" id="maxPrice" placeholder="Đến" style="width: 100%; padding: 5px; border: 1px solid #ddd; border-radius: 4px; font-size: 12px;">
+                        </div>
+                        <button id="applyPriceBtn" style="width: 100%; margin-top: 10px; padding: 8px; background: var(--primary); color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: 600;">ÁP DỤNG</button>
+                    </div>
+
+                    <button id="clearFiltersBtn" style="width: 100%; margin-top: 20px; padding: 10px; background: #f5f5f5; color: #666; border: 1px solid #ddd; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: 600; transition: all 0.3s;">XÓA TẤT CẢ LỌC</button>
+                </div>
+            </aside>
+
+            <!-- PRODUCT LIST AREA -->
+            <div class="category-products">
+                <div class="sort-bar" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: white; padding: 10px 20px; border-radius: 4px; box-shadow: var(--shadow);">
+                    <div style="font-size: 14px; color: #666;"><span id="productCount" style="font-weight: 700; color: var(--black);">0</span> sản phẩm</div>
+                    <div class="sort-options" style="display: flex; align-items: center; gap: 10px;">
+                        <label for="sortSelect" style="font-size: 13px; color: #666; font-weight: 600;">Sắp xếp:</label>
+                        <select id="sortSelect" style="padding: 6px 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 13px; cursor: pointer; outline: none; background: #fafafa;">
+                            <option value="default">Mặc định</option>
+                            <option value="price-asc">Giá thấp đến cao</option>
+                            <option value="price-desc">Giá cao đến thấp</option>
+                            <option value="name-asc">Tên từ A-Z</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="product-grid" id="categoryProductGrid" style="grid-template-columns: repeat(4, 1fr);">
+                    <!-- Products will be rendered here via JS -->
+                </div>
+
+                <div id="paginationContainer" class="pagination" style="display: flex; justify-content: center; gap: 10px; margin-top: 40px; margin-bottom: 20px;"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer style="background: white; margin-top: 60px; border-top: 1px solid var(--border); padding: 60px 0;">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h2 class="logo" style="margin-bottom: 20px;">Q&H <span>SKINLAB</span></h2>
+                <p style="font-size: 13px; color: #666; line-height: 1.8;">Chuyên cung cấp các dòng mỹ phẩm chính hãng từ Hàn Quốc, Nhật Bản và các thương hiệu nổi tiếng thế giới.</p>
+                <p style="font-size: 13px; color: #666; margin-top: 10px;">Hotline: <span id="footerHotline">1900 636 510</span></p>
+                <p style="font-size: 13px; color: #666;">Email: <span id="footerEmail">contact@qhskinlab.com</span></p>
+            </div>
+            <div class="footer-col">
+                <h4 style="margin-bottom: 20px; font-size: 15px; font-weight: 700;">CHÍNH SÁCH</h4>
+                <ul class="footer-links">
+                    <li><a href="policy.html">Chính sách bảo mật</a></li>
+                    <li><a href="policy.html">Điều khoản sử dụng</a></li>
+                    <li><a href="policy.html">Chính sách đổi trả</a></li>
+                    <li><a href="policy.html">Chính sách vận chuyển</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 style="margin-bottom: 20px; font-size: 15px; font-weight: 700;">HỖ TRỢ</h4>
+                <ul class="footer-links">
+                    <li><a href="support.html">Hướng dẫn mua hàng</a></li>
+                    <li><a href="support.html">Tra cứu đơn hàng</a></li>
+                    <li><a href="contact.html">Liên hệ</a></li>
+                    <li><a href="about.html">Hệ thống cửa hàng</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 style="margin-bottom: 20px; font-size: 15px; font-weight: 700;">KẾT NỐI</h4>
+                <div style="display: flex; gap: 15px;">
+                    <div style="width: 36px; height: 36px; background: var(--fb-blue); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; cursor: pointer;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </div>
+                    <div style="width: 36px; height: 36px; background: var(--google-red); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; cursor: pointer;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CÁC THÀNH PHẦN GIAO DIỆN CHUNG (CẦN CÓ TRÊN MỌI TRANG) -->
+    
+    <!-- CART DRAWER -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3 style="font-weight: 800; text-transform: uppercase;">Giỏ hàng</h3>
+            <span style="cursor: pointer; font-size: 24px;" id="closeCart">&times;</span>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div style="padding-top: 20px; border-top: 1px solid var(--border);">
+            <div class="flex-between" style="font-weight: 800; font-size: 18px; margin-bottom: 20px;">
+                <span>Tổng tiền:</span>
+                <span id="cartTotal">0đ</span>
+            </div>
+            <button id="checkoutBtn" style="width: 100%; padding: 15px; background: var(--primary); border: none; font-weight: 800; cursor: pointer; color: white;">THANH TOÁN NGAY</button>
+        </div>
+    </div>
+
+    <!-- LOGIN MODAL -->
+    <div class="modal-overlay" id="loginModalOverlay">
+        <div class="login-modal">
+            <span class="close-modal" id="closeLogin">&times;</span>
+            <div id="loginView">
+                <h2>Đăng nhập</h2>
+                <form class="login-form" id="loginForm">
+                    <input type="text" placeholder="Email hoặc Tên đăng nhập" required>
+                    <input type="password" placeholder="Mật khẩu" required>
+                    <div class="login-options">
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                            <input type="checkbox"> Ghi nhớ đăng nhập
+                        </label>
+                        <a href="#" id="forgotPassTrigger">Quên mật khẩu?</a>
+                    </div>
+                    <button type="submit" class="btn-login">Đăng nhập</button>
+                    <button type="button" class="btn-social btn-facebook">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                        Đăng nhập Facebook
+                    </button>
+                    <button type="button" class="btn-social btn-google">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.48 10.92v3.28h4.74c-.2 1.22-.97 2.22-2.25 3.07v2.55h3.64c2.13-1.96 3.36-4.85 3.36-8.19 0-.68-.07-1.15-.19-1.71H12.48zm-10.6 4.9c1.26 3.71 4.71 6.38 8.77 6.38 2.32 0 4.5-.79 6.14-2.13l-3.64-2.55c-.99.67-2.26 1.07-3.53 1.07-2.73 0-5.04-1.84-5.87-4.31H1.88v2.54zm8.77-13.43c-2.32 0-4.5.79-6.14 2.13l3.64 2.55c.99-.67-2.26 1.07-3.53 1.07-2.73 0-5.04-1.84-5.87-4.31h3.99v-2.54c-1.26-3.71-4.71-6.38-8.77-6.38z"></path></svg>
+                        Đăng nhập Google
+                    </button>
+                    <div class="register-section">
+                        <p>Tạo tài khoản ngay</p>
+                        <button type="button" class="btn-register" id="toRegister">Đăng ký</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="forgotPasswordView" style="display: none;">
+                <h2>Quên mật khẩu</h2>
+                <form class="login-form" id="forgotPassForm">
+                    <p style="font-size: 13px; color: #666; margin-bottom: 20px; text-align: center;">Nhập email của bạn để nhận mật khẩu mới.</p>
+                    <input type="email" id="forgotEmail" placeholder="Email" required>
+                    <button type="submit" class="btn-login">Gửi yêu cầu</button>
+                    <div class="register-section">
+                        <p>Nhớ mật khẩu?</p>
+                        <button type="button" class="btn-register" id="backToLoginFromForgot">Quay lại đăng nhập</button>
+                    </div>
+                </form>
+            </div>
+            <div id="registerView" style="display: none;">
+                <h2>Đăng ký</h2>
+                <form class="login-form" id="registerForm">
+                    <input type="text" placeholder="Họ và tên" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Mật khẩu" required>
+                    <button type="submit" class="btn-login">Đăng ký</button>
+                    <div class="register-section">
+                        <p>Đã có tài khoản?</p>
+                        <button type="button" class="btn-register" id="toLogin">Đăng nhập</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROFILE OVERLAY -->
+    <div class="admin-overlay" id="profileOverlay" style="z-index: 12000; background: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center;">
+        <div style="width: 1000px; height: 600px; background: white; border-radius: 8px; display: flex; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: relative;">
+            <button onclick="document.getElementById('profileOverlay').classList.remove('active'); document.getElementById('profileOverlay').style.display='none';" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: #888; z-index: 10;">&times;</button>
+            <div style="width: 250px; background: #fafafa; border-right: 1px solid #eee; padding: 30px 0; display: flex; flex-direction: column;">
+                <div style="padding: 0 25px 30px; border-bottom: 1px solid #eee;">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div id="profileAvatar" style="width: 50px; height: 50px; background: var(--red); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px;">NH</div>
+                        <div style="overflow: hidden;">
+                            <div id="profileUserName" style="font-weight: 700; font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">User</div>
+                            <div id="profileUserEmail" style="font-size: 12px; color: #888; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">email@gmail.com</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-menu" style="flex-grow: 1; display: flex; flex-direction: column;">
+                    <div class="profile-menu-item active" data-tab="info" onclick="switchProfileTab('info')">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        Thông tin
+                    </div>
+                    <div class="profile-menu-item" data-tab="orders" onclick="switchProfileTab('orders')">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                        Quản lý đơn hàng
+                    </div>
+                    <div class="profile-menu-item" data-tab="favorites" onclick="switchProfileTab('favorites')">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                        Sản phẩm yêu thích
+                    </div>
+                    <div class="profile-menu-item" data-tab="viewed" onclick="switchProfileTab('viewed')">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                        Sản phẩm đã xem
+                    </div>
+                    <div class="profile-menu-item logout" onclick="logoutUser()" style="margin-top: auto; border-top: 1px solid #eee;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                        Đăng xuất
+                    </div>
+                </div>
+            </div>
+            <div style="flex-grow: 1; padding: 40px; background: #fff; overflow-y: auto;">
+                <div id="tab-info" class="profile-tab-pane active">
+                    <h2 style="font-size: 20px; font-weight: 700; margin-bottom: 20px; color: var(--primary);">Thông tin cá nhân</h2>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div>
+                            <label style="display: block; font-size: 13px; color: #888; margin-bottom: 5px;">Họ và tên</label>
+                            <div id="infoName" style="padding: 10px; border-bottom: 1px solid #eee; font-weight: 600;">User</div>
+                        </div>
+                        <div>
+                            <label style="display: block; font-size: 13px; color: #888; margin-bottom: 5px;">Email</label>
+                            <div id="infoEmail" style="padding: 10px; border-bottom: 1px solid #eee; font-weight: 600;">email@gmail.com</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab-orders" class="profile-tab-pane">
+                    <h2 style="font-size: 20px; font-weight: 700; margin-bottom: 20px; color: var(--primary);">Quản lý đơn hàng</h2>
+                    <div class="order-tabs">
+                        <div class="order-tab active" onclick="switchOrderTab(this, 'Chờ xác nhận')">Chờ xác nhận</div>
+                        <div class="order-tab" onclick="switchOrderTab(this, 'Chờ lấy hàng')">Chờ lấy hàng</div>
+                        <div class="order-tab" onclick="switchOrderTab(this, 'Đang giao')">Đang giao</div>
+                        <div class="order-tab" onclick="switchOrderTab(this, 'Đã giao')">Đã giao</div>
+                        <div class="order-tab" onclick="switchOrderTab(this, 'Đã huỷ')">Đã huỷ</div>
+                    </div>
+                    <div id="profileOrdersList" style="color: #888;">Bạn chưa có đơn hàng nào.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
