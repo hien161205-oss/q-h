@@ -389,7 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (index === -1) {
             localProducts.push(p); // Thêm mới nếu chưa có ID
             isUpdated = true;
-        } else if (localProducts[index].image !== p.image || (localProducts[index].images && p.images && localProducts[index].images.length !== p.images.length)) {
+        } else if (localProducts[index].image !== p.image || localProducts[index].images.length !== p.images.length) {
             localProducts[index] = p; // Ghi đè nếu dữ liệu trong code khác với trình duyệt
             isUpdated = true;
         }
@@ -424,7 +424,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // Category Page Logic
-    if (window.location.pathname.includes('category.html')) {
+    if (window.location.pathname.includes('./category.html') || window.location.pathname.includes('category.html')) {
         handleCategoryPage();
     }
     
@@ -648,7 +648,7 @@ function handleMagazinePage() {
         
         item.addEventListener('click', () => {
             const newTopic = item.dataset.topic;
-            window.history.pushState({}, '', `magazine.html?topic=${newTopic}`);
+            window.history.pushState({}, '', `./magazine.html?topic=${newTopic}`);
             
             sidebarItems.forEach(i => i.classList.remove('active'));
             item.classList.add('active');
@@ -679,7 +679,7 @@ function renderMagazinePosts(topic) {
     if (breadcrumbEl) breadcrumbEl.innerText = topic === 'all' ? 'Tất cả' : title;
     
     grid.innerHTML = filtered.map(post => `
-        <div class="magazine-card" onclick="location.href='magazine-detail.html?id=${post.id}'">
+        <div class="magazine-card" onclick="location.href='./magazine-detail.html?id=${post.id}'">
             <div class="mag-card-img">
                 <img src="${post.thumbnail}" alt="${post.title}" referrerPolicy="no-referrer">
             </div>
@@ -865,7 +865,7 @@ window.goToDetail = function(id) {
         localStorage.setItem('selectedProductId', p.id);
         localStorage.setItem('selectedProductName', p.name);
         localStorage.setItem('selectedProductImage', p.image);
-        window.location.href = 'product-detail.html';
+        window.location.href = './product-detail.html';
     }
 };
 
@@ -903,7 +903,7 @@ window.buyNow = function(id) {
     const directItems = [{ ...product, quantity }];
     localStorage.setItem('qh_checkoutMode', 'direct');
     localStorage.setItem('qh_directCheckoutItems', JSON.stringify(directItems));
-    window.location.href = 'checkout.html';
+    window.location.href = './checkout.html';
 };
 
 window.changeCartQuantity = function(id, delta) {
@@ -1027,12 +1027,12 @@ function initEvents() {
                 
                 if (window.location.pathname.includes('category.html')) {
                     // Cập nhật URL mà không load lại trang
-                    const newUrl = `category.html?q=${encodeURIComponent(q)}`;
+                    const newUrl = `./category.html?q=${encodeURIComponent(q)}`;
                     window.history.pushState({ path: newUrl }, '', newUrl);
                     // Gọi hàm xử lý danh mục để cập nhật giao diện ngay lập tức
                     handleCategoryPage();
                 } else {
-                    window.location.href = `category.html?q=${encodeURIComponent(q)}`;
+                    window.location.href = `./category.html?q=${encodeURIComponent(q)}`;
                 }
             }
         };
@@ -1238,13 +1238,10 @@ function initEvents() {
                 sessionStorage.setItem('adminLoggedIn', 'true');
                 updateUserDisplay({ name: 'admin', email: 'admin@qhskinlab.com' });
                 showToast('Chào mừng Admin trở lại!');
-                if (loginModal) {
-                    loginModal.classList.remove('active');
-                    setTimeout(() => loginModal.style.display = 'none', 300);
-                }
+                if (loginModal) loginModal.classList.remove('active');
                 // Chuyển hướng nếu đang ở trang login.html
                 if (window.location.pathname.includes('login.html')) {
-                    setTimeout(() => window.location.href = 'index.html', 1000);
+                    setTimeout(() => window.location.href = './index.html', 1000);
                 }
                 return;
             }
@@ -1260,7 +1257,7 @@ function initEvents() {
                     if (loginModal) loginModal.classList.remove('active');
                     // Chuyển hướng nếu đang ở trang login.html
                     if (window.location.pathname.includes('login.html')) {
-                        setTimeout(() => window.location.href = 'index.html', 1000);
+                        setTimeout(() => window.location.href = './index.html', 1000);
                     }
                 } else {
                     showToast('Email hoặc mật khẩu không đúng');
@@ -1280,7 +1277,7 @@ function initEvents() {
             if (loginModal) loginModal.classList.remove('active');
             // Chuyển hướng nếu đang ở trang login.html
             if (window.location.pathname.includes('login.html')) {
-                setTimeout(() => window.location.href = 'index.html', 1000);
+                setTimeout(() => window.location.href = './index.html', 1000);
             }
         });
     }
@@ -1338,7 +1335,7 @@ function initEvents() {
             registerForm.reset();
             // Chuyển hướng nếu đang ở trang login.html
             if (window.location.pathname.includes('login.html')) {
-                setTimeout(() => window.location.href = 'index.html', 1000);
+                setTimeout(() => window.location.href = './index.html', 1000);
             }
         });
     }
@@ -1482,7 +1479,7 @@ function initEvents() {
         let orders = JSON.parse(localStorage.getItem('qh_orders') || '[]');
         
         // Filter by status
-        orders = orders.filter(o => (o.status || 'Chờ xác nhận') === statusFilter).reverse();
+        orders = orders.filter(o => (o.status || 'Chờ xác nhận') === statusFilter);
         
         if (orders.length === 0) {
             ordersList.innerHTML = '<div style="color: #888; text-align: center; padding: 60px 20px;">' +
@@ -1523,7 +1520,7 @@ function initEvents() {
                         </div>
                         <div style="text-align: right;">
                             <span style="font-size: 13px; color: #666;">Thành tiền: </span>
-                            <b style="color: var(--red); font-size: 18px;">${parseOrderTotal(order.total).toLocaleString()}đ</b>
+                            <b style="color: var(--red); font-size: 18px;">${order.total}</b>
                         </div>
                     </div>
                 </div>
@@ -1929,7 +1926,7 @@ function initEvents() {
             localStorage.setItem('qh_checkoutMode', 'cart');
             localStorage.removeItem('qh_directCheckoutItems');
             closeCart();
-            window.location.href = 'checkout.html';
+            window.location.href = './checkout.html';
         });
     }
 
