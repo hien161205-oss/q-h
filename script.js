@@ -424,17 +424,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // Category Page Logic
-    if (window.location.pathname.includes('category.html')) {
+    if (window.location.pathname.includes('category')) {
         handleCategoryPage();
     }
     
     // Magazine Page Logic
-    if (window.location.pathname.includes('magazine.html')) {
+    if (window.location.pathname.includes('magazine') && !window.location.pathname.includes('detail')) {
         handleMagazinePage();
     }
 
     // Magazine Detail Logic
-    if (window.location.pathname.includes('magazine-detail.html')) {
+    if (window.location.pathname.includes('magazine-detail')) {
         handleMagazineDetailPage();
     }
 });
@@ -1025,7 +1025,7 @@ function initEvents() {
             if (q) {
                 if (searchResults) searchResults.style.display = 'none';
                 
-                if (window.location.pathname.includes('category.html')) {
+                if (window.location.pathname.includes('category')) {
                     // Cập nhật URL mà không load lại trang
                     const newUrl = `./category.html?q=${encodeURIComponent(q)}`;
                     window.history.pushState({ path: newUrl }, '', newUrl);
@@ -1243,7 +1243,7 @@ function initEvents() {
                     setTimeout(() => loginModal.style.display = 'none', 300);
                 }
                 // Chuyển hướng nếu đang ở trang login.html
-                if (window.location.pathname.includes('login.html')) {
+                if (window.location.pathname.includes('login')) {
                     setTimeout(() => window.location.href = './index.html', 1000);
                 }
                 return;
@@ -1259,7 +1259,7 @@ function initEvents() {
                     showToast('Chào mừng bạn đã trở lại với Q&H SKINLAB!');
                     if (loginModal) loginModal.classList.remove('active');
                     // Chuyển hướng nếu đang ở trang login.html
-                    if (window.location.pathname.includes('login.html')) {
+                    if (window.location.pathname.includes('login')) {
                         setTimeout(() => window.location.href = './index.html', 1000);
                     }
                 } else {
@@ -1279,7 +1279,7 @@ function initEvents() {
             showToast('Chào mừng bạn đã trở lại với Q&H SKINLAB!');
             if (loginModal) loginModal.classList.remove('active');
             // Chuyển hướng nếu đang ở trang login.html
-            if (window.location.pathname.includes('login.html')) {
+            if (window.location.pathname.includes('login')) {
                 setTimeout(() => window.location.href = './index.html', 1000);
             }
         });
@@ -1337,7 +1337,7 @@ function initEvents() {
             if (loginModal) loginModal.classList.remove('active');
             registerForm.reset();
             // Chuyển hướng nếu đang ở trang login.html
-            if (window.location.pathname.includes('login.html')) {
+            if (window.location.pathname.includes('login')) {
                 setTimeout(() => window.location.href = './index.html', 1000);
             }
         });
