@@ -389,7 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (index === -1) {
             localProducts.push(p); // Thêm mới nếu chưa có ID
             isUpdated = true;
-        } else if (localProducts[index].image !== p.image || localProducts[index].images.length !== p.images.length) {
+        } else if (localProducts[index].image !== p.image || (localProducts[index].images && p.images && localProducts[index].images.length !== p.images.length)) {
             localProducts[index] = p; // Ghi đè nếu dữ liệu trong code khác với trình duyệt
             isUpdated = true;
         }
