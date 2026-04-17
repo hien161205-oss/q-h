@@ -389,7 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (index === -1) {
             localProducts.push(p); // Thêm mới nếu chưa có ID
             isUpdated = true;
-        } else if (localProducts[index].image !== p.image || localProducts[index].images.length !== p.images.length) {
+        } else if (localProducts[index].image !== p.image || (localProducts[index].images && p.images && localProducts[index].images.length !== p.images.length)) {
             localProducts[index] = p; // Ghi đè nếu dữ liệu trong code khác với trình duyệt
             isUpdated = true;
         }
@@ -424,7 +424,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // Category Page Logic
-    if (window.location.pathname.includes('./category.html') || window.location.pathname.includes('category.html')) {
+    if (window.location.pathname.includes('category.html')) {
         handleCategoryPage();
     }
     
@@ -1238,7 +1238,10 @@ function initEvents() {
                 sessionStorage.setItem('adminLoggedIn', 'true');
                 updateUserDisplay({ name: 'admin', email: 'admin@qhskinlab.com' });
                 showToast('Chào mừng Admin trở lại!');
-                if (loginModal) loginModal.classList.remove('active');
+                if (loginModal) {
+                    loginModal.classList.remove('active');
+                    setTimeout(() => loginModal.style.display = 'none', 300);
+                }
                 // Chuyển hướng nếu đang ở trang login.html
                 if (window.location.pathname.includes('login.html')) {
                     setTimeout(() => window.location.href = './index.html', 1000);
@@ -1479,7 +1482,7 @@ function initEvents() {
         let orders = JSON.parse(localStorage.getItem('qh_orders') || '[]');
         
         // Filter by status
-        orders = orders.filter(o => (o.status || 'Chờ xác nhận') === statusFilter);
+        orders = orders.filter(o => (o.status || 'Chờ xác nhận') === statusFilter).reverse();
         
         if (orders.length === 0) {
             ordersList.innerHTML = '<div style="color: #888; text-align: center; padding: 60px 20px;">' +
@@ -1520,7 +1523,7 @@ function initEvents() {
                         </div>
                         <div style="text-align: right;">
                             <span style="font-size: 13px; color: #666;">Thành tiền: </span>
-                            <b style="color: var(--red); font-size: 18px;">${order.total}</b>
+                            <b style="color: var(--red); font-size: 18px;">${parseOrderTotal(order.total).toLocaleString()}đ</b>
                         </div>
                     </div>
                 </div>
@@ -2107,23 +2110,26 @@ if (document.readyState === 'loading') {
         });
     }
 
-function updateUserDisplay(user) {
-    if (!user) return;
+function updateUserDisplay(userData) {
+    if (!userData) return;
+    // Đảm bảo userData luôn là object để lấy đúng trường name
+    const user = typeof userData === 'string' ? { name: userData, email: '' } : userData;
+    
     isLoggedIn = true;
     currentUserName = user.name;
     currentUserEmail = user.email;
     
     localStorage.setItem('qh_isLoggedIn', 'true');
-    localStorage.setItem('qh_userName', user.name);
-    localStorage.setItem('qh_userEmail', user.email);
+    localStorage.setItem('qh_userName', currentUserName);
+    localStorage.setItem('qh_userEmail', currentUserEmail);
     
     const display = document.getElementById('userNameDisplay');
     const adminBtn = document.getElementById('adminPanelBtn');
     if (display) {
-        display.textContent = user.name;
+        display.textContent = currentUserName;
         display.style.display = 'inline-block';
     }
-    if (user.name === 'admin' && adminBtn) {
+    if (currentUserName === 'admin' && adminBtn) {
         adminBtn.style.display = 'flex';
     }
 
@@ -2134,13 +2140,19 @@ function updateUserDisplay(user) {
     const infoName = document.getElementById('infoName');
     const infoEmail = document.getElementById('infoEmail');
 
-    if (profileUserName) profileUserName.textContent = user.name;
-    if (profileUserEmail) profileUserEmail.textContent = user.email;
-    if (infoName) infoName.textContent = user.name;
-    if (infoEmail) infoEmail.textContent = user.email;
+    if (profileUserName) profileUserName.textContent = currentUserName;
+    if (profileUserEmail) profileUserEmail.textContent = currentUserEmail;
+    if (infoName) infoName.textContent = currentUserName;
+    if (infoEmail) infoEmail.textContent = currentUserEmail;
     
-    if (profileAvatar && user.name) {
-        profileAvatar.textContent = user.name.substring(0, 2).toUpperCase();
+    if (profileAvatar && currentUserName) {
+        profileAvatar.textContent = currentUserName.substring(0, 2).toUpperCase();
+    }
+    // Đóng login modal nếu đang mở
+    const loginModal = document.getElementById('loginModalOverlay');
+    if (loginModal) {
+        loginModal.classList.remove('active');
+        loginModal.style.display = 'none';
     }
 }
 

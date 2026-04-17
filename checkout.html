@@ -5,11 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thanh toán | Q&H SKINLAB</title>
     <link rel="stylesheet" href="./style.css">
-    <style>./style.css">
-    <style>./style.css">
-    <style>./style.css">
-    <style>./style.css">
-    <style>./style.css">
     <style>
         body { background: #f5f7fb; }
         .checkout-page { padding: 40px 0; }
@@ -60,7 +55,7 @@
                 <h1>Thanh toán đơn hàng</h1>
                 <p style="margin: 10px 0 0; color: #5c6d87;">Hoàn tất thông tin để chúng tôi chuẩn bị đơn hàng và giao nhanh nhất.</p>
             </div>
-            <a href="index.html">Tiếp tục mua sắm</a>
+            <a href="./index.html">Tiếp tục mua sắm</a>
         </div>
 
         <div class="checkout-grid">
@@ -107,14 +102,14 @@
                 <div id="checkoutSuccess" class="checkout-success">
                     <h3>Thanh toán thành công!</h3>
                     <p>Đơn hàng của bạn đã được tiếp nhận. Chúng tôi sẽ liên hệ để xác nhận và giao hàng sớm nhất.</p>
-                    <a id="successHomeLink" href="index.html">Về trang chủ</a>
+                    <a id="successHomeLink" href="./index.html">Về trang chủ</a>
                 </div>
             </section>
 
             <aside class="checkout-card">
                 <h2>Đơn hàng của bạn</h2>
                 <div id="orderItems"></div>
-                
+                <div id="orderItems" style="margin-bottom: 20px;"></div>
                 <div class="coupon-group">
                     <div style="flex: 1;">
                         <input type="text" id="couponCode" placeholder="Nhập mã giảm giá (SALE10, SALE20...)">
@@ -149,7 +144,7 @@
         </div>
     </main>
 
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
     <script>
         let currentCoupon = null;
         let couponDiscountAmount = 0;
